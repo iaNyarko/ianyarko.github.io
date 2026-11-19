@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Immanuel Nyarko Apps</title>
+<meta name="description" content="Free phone apps for everyday Ghanaian life, made in Accra by Immanuel Adom Nyarko.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}
+/* Layout: a street of app "kiosks". Hero with fanned phones, then one row per app: words left, a strip of real screens right, each signed with a trotro-style slogan sticker. */
+:root{
+  --ground:#EDEFEA; --paper:#F8F9F5; --ink:#15191B; --soft:#5A6260; --rule:#D3D8D2;
+  --sticker:#FFC62B; --sticker-ink:#C8102E;
+  --f-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ground:#121617; --paper:#1A1F20; --ink:#ECEEE8; --soft:#9BA4A1; --rule:#2B3233; --sticker:#FFC62B; --sticker-ink:#B30D28; color-scheme:dark}}
+:root[data-theme="dark"]{--ground:#121617; --paper:#1A1F20; --ink:#ECEEE8; --soft:#9BA4A1; --rule:#2B3233; --sticker:#FFC62B; --sticker-ink:#B30D28; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{background:var(--ground)}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sticker);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px;border-bottom:2px solid var(--ink)}
+.top b{font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.top nav{display:flex;gap:18px;flex-wrap:wrap}
+.top nav a{text-decoration:none;font-weight:600;font-size:15px}
+.top nav a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;padding-block:56px 40px}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(44px,7.4vw,92px);line-height:1.02;letter-spacing:-.045em;margin:14px 0 22px;text-wrap:balance}
+.hero h1 em{font-style:normal;background:var(--sticker);color:#15191B;padding:0 .12em .04em;border-radius:6px;line-height:1.1;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero p{max-width:34em;margin:0 0 26px;color:var(--soft);font-size:18px}
+.hero p strong{color:var(--ink)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--ink);font-size:16px}
+.btn.solid{background:var(--ink);color:var(--ground)}
+.btn:hover{transform:translateY(-1px)}
+.fan{position:relative;height:440px}
+.fan .phone{position:absolute;top:20px;width:190px}
+.fan .phone:nth-child(1){left:2%;transform:rotate(-9deg);top:46px}
+.fan .phone:nth-child(2){left:30%;z-index:2;top:0}
+.fan .phone:nth-child(3){left:58%;transform:rotate(8deg);top:52px}
+
+/* phone frame */
+.phone{border:6px solid #15191B;border-radius:30px;overflow:hidden;background:#15191B;box-shadow:0 22px 40px -24px rgba(0,0,0,.55);aspect-ratio:450/973;max-width:100%}
+.phone img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* facts strip */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:2px solid var(--ink)}
+.facts div{padding:16px 14px;border-left:1px solid var(--rule)}
+.facts div:first-child{border-left:0}
+.facts b{display:block;font-family:var(--f-display);font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.facts span{color:var(--soft);font-size:14px}
+
+/* apps */
+.apps{display:flex;flex-direction:column}
+.sechead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-block:64px 8px;flex-wrap:wrap}
+.sechead h2{font-family:var(--f-display);font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.035em;margin:0;line-height:1}
+.app{--c:#333;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px;padding-block:44px;border-top:1px solid var(--rule)}
+.app:first-of-type{border-top:0}
+.app .txt{display:flex;flex-direction:column;gap:16px;min-width:0}
+.tagrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chip{font-family:var(--f-mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:6px;border:1.5px solid var(--ink)}
+.chip.live{background:var(--c);color:#fff;border-color:var(--c)}
+.chip.soon{border-style:dashed}
+.app h3{font-family:var(--f-display);font-size:clamp(36px,4.6vw,56px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin:0}
+.app h3 span{color:var(--c)}
+.lede{font-size:20px;line-height:1.4;margin:0;font-weight:500;max-width:26em}
+.why{margin:0;color:var(--soft);max-width:32em;border-left:3px solid var(--c);padding-left:14px;font-size:16px}
+.feat{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:16px}
+.feat li{display:grid;grid-template-columns:18px 1fr;gap:8px}
+.feat li::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c);margin-top:.55em}
+.open{align-self:flex-start;display:inline-flex;gap:8px;align-items:center;font-weight:700;text-decoration:none;border-bottom:2px solid var(--c);padding-bottom:2px}
+.open:hover{color:var(--c)}
+.open small{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--soft)}
+
+.shots{position:relative;min-width:0}
+.strip{display:flex;gap:16px;overflow-x:auto;padding:28px 4px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.strip .phone{flex:0 0 clamp(150px,30%,200px);scroll-snap-align:start}
+.strip .phone:nth-child(2){transform:translateY(-14px)}
+
+/* trotro slogan sticker */
+.sticker{position:absolute;z-index:3;top:-4px;right:6px;transform:rotate(4deg);background:var(--sticker);color:var(--sticker-ink);font-family:var(--f-display);font-weight:800;font-size:15px;letter-spacing:.02em;text-transform:uppercase;padding:7px 14px 6px;border-radius:4px;box-shadow:0 0 0 3px #15191B,0 6px 0 3px #15191B;white-space:nowrap}
+.app:nth-of-type(even) .sticker{transform:rotate(-3deg);right:auto;left:10px}
+
+/* Chop Week mock board (no screenshot) */
+.board{background:#1E3B2C;color:#F2EFD9;padding:14px 10px;display:flex;flex-direction:column;justify-content:space-between;gap:4px;height:100%;overflow:hidden;font-family:var(--f-body)}
+.board h4{margin:0 0 2px;font-family:var(--f-display);font-size:19px;letter-spacing:-.02em;color:#FFC62B}
+.board .d{display:grid;grid-template-columns:30px 1fr;gap:4px;font-size:11.5px;line-height:1.25;border-top:1px dashed rgba(242,239,217,.35);padding-top:6px}
+.board .d b{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:#9FD3B5}
+
+/* how */
+.how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:var(--paper)}
+.how div{padding:22px 20px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:6px}
+.how div:first-child{border-left:0}
+.how b{font-family:var(--f-display);font-size:20px;letter-spacing:-.02em}
+.how span{color:var(--soft);font-size:15px}
+.partner{max-width:46em;color:var(--soft);font-size:16px;margin:18px 0 0}
+
+/* workbench */
+.bench{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:baseline;padding:22px 0;border-top:1px solid var(--rule)}
+.bench b{font-family:var(--f-display);font-size:22px;letter-spacing:-.02em}
+.bench p{margin:0;color:var(--soft);max-width:44em}
+
+/* contact */
+.contact{margin-block:72px 0;background:var(--ink);color:var(--ground);border-radius:24px;padding:44px 32px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:32px;align-items:end}
+.contact h2{font-family:var(--f-display);font-size:clamp(34px,5vw,60px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin:0 0 14px;text-wrap:balance}
+.contact p{margin:0;opacity:.8;max-width:30em}
+.mail{display:flex;flex-direction:column;gap:12px;min-width:0}
+.mailbox{display:flex;gap:8px;align-items:center;background:color-mix(in srgb,var(--ground) 10%,transparent);border-radius:14px;padding:8px 8px 8px 14px;min-width:0}
+.mailbox code{font-family:var(--f-mono);font-size:14px;flex:1;min-width:0;overflow-wrap:anywhere;user-select:all}
+.mailbox button{border:0;border-radius:10px;background:var(--sticker);color:#15191B;font:700 14px var(--f-body);padding:10px 14px;cursor:pointer;flex:none}
+.contact .btn{border-color:var(--ground);color:var(--ground);justify-content:center}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:26px 40px;color:var(--soft);font-size:14px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-block:36px 24px;gap:24px}
+  .fan{height:340px;max-width:440px;width:100%;margin:0 auto}
+  .fan .phone{width:150px}
+  .app{grid-template-columns:1fr;gap:8px;padding-block:36px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts div:nth-child(3){border-left:0}
+  .facts div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .how{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .how div:nth-child(3){border-left:0}
+  .how div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .contact{grid-template-columns:1fr;padding:32px 22px}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .top nav{gap:12px}.top nav a{font-size:14px}
+  .top nav a.hide-s{display:none}
+  .fan{height:300px}
+  .fan .phone{width:128px}
+  .how{grid-template-columns:1fr}
+  .how div{border-left:0;border-top:1px solid var(--rule)}
+  .how div:first-child{border-top:0}
+  .bench{grid-template-columns:1fr}
+  .strip .phone{flex-basis:44%}
+}
+@media (prefers-reduced-motion:no-preference){
+  .phone{transition:transform .25s ease}
+  .strip .phone:hover{transform:translateY(-6px) rotate(-1deg)}
+  .btn{transition:transform .15s ease}
+}
+</style>
+<meta property="og:title" content="Immanuel Nyarko Apps">
+<meta property="og:description" content="Free phone apps for everyday Ghanaian life, made in Accra.">
+<meta property="og:image" content="https://ianyarko.github.io/og.png">
+<meta property="og:url" content="https://ianyarko.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315191B'/%3E%3Crect x='10' y='22' width='44' height='20' rx='4' fill='%23FFC62B' transform='rotate(-6 32 32)'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <b>iaNyarko</b>
+    <nav aria-label="Sections">
+      <a href="#apps">Apps</a>
+      <a href="#how" class="hide-s">How I build</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/iaNyarko" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="mono" style="color:var(--soft)">Made in Accra · 2026</div>
+      <h1>Free apps for <em>everyday</em> Ghanaian life.</h1>
+      <p>I’m <strong>Immanuel Adom Nyarko</strong>, an Economics &amp; Statistics student at the University of Ghana who sells kitchens, wardrobes and office furniture by day. In between, I build phone apps for problems my friends and I actually have: where the salary went, what to eat, and how to start running.</p>
+      <div class="cta">
+        <a class="btn solid" href="#apps">See the apps ↓</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="fan" aria-hidden="true">
+      <div class="phone"><img src="shots/rw-1.jpg" alt=""></div>
+      <div class="phone"><img src="shots/pc-1.jpg" alt=""></div>
+      <div class="phone"><img src="shots/wc-2.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="At a glance">
+    <div><b>5</b><span>apps, 4 already live</span></div>
+    <div><b>GH₵ 0</b><span>to install, no Play Store</span></div>
+    <div><b>0</b><span>accounts or sign-ups needed</span></div>
+    <div><b>Offline</b><span>works with no data bundle</span></div>
+  </section>
+
+  <section class="apps" id="apps">
+    <div class="sechead"><h2>The apps</h2><span class="mono" style="color:var(--soft)">Tap a link to open on your phone</span></div>
+
+    <article class="app" style="--c:#0D6A45">
+      <div class="txt">
+        <div class="tagrow"><span class="chip live">Live</span><span class="chip">Spending tracker</span></div>
+        <h3>Pocket <span>Cedi</span></h3>
+        <p class="lede">For the end of the month, when you ask yourself where the salary went.</p>
+        <p class="why">Months went by and I didn’t know why my money was burning. Logging every cedi gave me a direct relationship with my money, so I built the tracker I wanted.</p>
+        <ul class="feat">
+          <li>Paste a MoMo SMS and the entry fills itself in</li>
+          <li>Budgets follow your pay day, not the calendar</li>
+          <li>Keeps track of who owes you, and who you owe</li>
+          <li>Savings goals with a clay pot that fills up</li>
+        </ul>
+        <a class="open" href="https://ianyarko.github.io/pocket-cedi/" target="_blank" rel="noopener">Open Pocket Cedi ↗ <small>/pocket-cedi</small></a>
+      </div>
+      <div class="shots">
+        <span class="sticker">Money no be leaf</span>
+        <div class="strip">
+          <div class="phone"><img src="shots/pc-1.jpg" alt="Pocket Cedi overview: GH₵ 161 spent this pay period, money left in cash and MoMo" loading="lazy"></div>
+          <div class="phone"><img src="shots/pc-2.jpg" alt="Pocket Cedi entries list: trotro, chop bar lunch, data bundle" loading="lazy"></div>
+          <div class="phone"><img src="shots/pc-3.jpg" alt="Pocket Cedi budgets screen with pay day and monthly limits" loading="lazy"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="app" style="--c:#E0531F">
+      <div class="txt">
+        <div class="tagrow"><span class="chip live">Live</span><span class="chip">Running coach</span></div>
+        <h3>Run Walk <span>Cycle</span></h3>
+        <p class="lede">From your first minute of running to 30 minutes non-stop, in eight weeks.</p>
+        <p class="why">I jog in intervals, run five minutes and walk two. I wanted a timer that switches by itself, so I can stop staring at my phone.</p>
+        <ul class="feat">
+          <li>A voice tells you when to run and when to walk</li>
+          <li>Pocket mode: black screen, taps locked, battery saved</li>
+          <li>Distance and pace with GPS</li>
+          <li>Streaks and personal bests to chase</li>
+        </ul>
+        <a class="open" href="https://ianyarko.github.io/run-walk-cycle/" target="_blank" rel="noopener">Open Run Walk Cycle ↗ <small>/run-walk-cycle</small></a>
+      </div>
+      <div class="shots">
+        <span class="sticker">Small small</span>
+        <div class="strip">
+          <div class="phone"><img src="shots/rw-1.jpg" alt="Run Walk Cycle today screen: 1 min run, 2 min walk, 8 rounds" loading="lazy"></div>
+          <div class="phone"><img src="shots/rw-2.jpg" alt="Run Walk Cycle live timer showing a 5 minute warm up" loading="lazy"></div>
+          <div class="phone"><img src="shots/rw-3.jpg" alt="Run Walk Cycle done screen: You did it. Kelewele is earned." loading="lazy"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="app" style="--c:#E0243A">
+      <div class="txt">
+        <div class="tagrow"><span class="chip live">Live</span><span class="chip">Progress photos</span></div>
+        <h3>Morph<span>ē</span></h3>
+        <p class="lede">One photo a day, lined up with yesterday’s, turned into a timelapse of how you’ve changed.</p>
+        <p class="why">Gym progress is hard to see in the mirror. Morphē puts the days side by side so you can see it.</p>
+        <ul class="feat">
+          <li>Separate rolls for your face and your full body</li>
+          <li>The outline of yesterday’s photo helps you line up</li>
+          <li>Before-and-after slider, then export a video</li>
+          <li>Photos never leave the phone; optional PIN lock</li>
+        </ul>
+        <a class="open" href="https://ianyarko.github.io/morphe/" target="_blank" rel="noopener">Open Morphē ↗ <small>/morphe</small></a>
+      </div>
+      <div class="shots">
+        <span class="sticker">Who knows tomorrow</span>
+        <div class="strip">
+          <div class="phone"><img src="shots/mo-1.jpg" alt="Morphē roll of daily full-body photos from 26 Oct to 16 Nov" loading="lazy"></div>
+          <div class="phone"><img src="shots/mo-2.jpg" alt="Morphē before and after slider comparing two dates" loading="lazy"></div>
+          <div class="phone"><img src="shots/mo-3.jpg" alt="Morphē develop screen for making a timelapse video" loading="lazy"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="app" style="--c:#2D7A4E">
+      <div class="txt">
+        <div class="tagrow"><span class="chip live">Live</span><span class="chip">Meal planner</span></div>
+        <h3>Chop <span>Week</span></h3>
+        <p class="lede">Plan the week’s food on Sunday, so “what are we eating?” is already answered.</p>
+        <ul class="feat">
+          <li>A plan for every day of the week</li>
+          <li>Ghanaian dishes, not someone else’s menu</li>
+        </ul>
+        <a class="open" href="https://ianyarko.github.io/chop-week/" target="_blank" rel="noopener">Open Chop Week ↗ <small>/chop-week</small></a>
+      </div>
+      <div class="shots">
+        <span class="sticker">Chop time no friend</span>
+        <div class="strip">
+          <div class="phone" role="img" aria-label="Illustration of a weekly menu board">
+            <div class="board"><h4>This week</h4>
+              <div class="d"><b>MON</b><span>Waakye &amp; wele</span></div>
+              <div class="d"><b>TUE</b><span>Jollof &amp; chicken</span></div>
+              <div class="d"><b>WED</b><span>Banku &amp; okro stew</span></div>
+              <div class="d"><b>THU</b><span>Red red &amp; plantain</span></div>
+              <div class="d"><b>FRI</b><span>Fufu &amp; light soup</span></div>
+              <div class="d"><b>SAT</b><span>Kenkey &amp; fried fish</span></div>
+              <div class="d"><b>SUN</b><span>Omo tuo &amp; nkate</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="app" style="--c:#C8102E">
+      <div class="txt">
+        <div class="tagrow"><span class="chip soon">Coming soon</span><span class="chip">Food decider</span></div>
+        <h3>Wetin I Go <span>Chop?</span></h3>
+        <p class="lede">You can’t decide what to eat. Spin the wheel and let it decide for you.</p>
+        <ul class="feat">
+          <li>64 dishes from across Ghana, from gari foto to tuo zaafi</li>
+          <li>Filter by budget, mood, time of day and region</li>
+          <li>“Who dey pay?” wheel to settle the bill with friends</li>
+        </ul>
+      </div>
+      <div class="shots">
+        <span class="sticker">No wahala</span>
+        <div class="strip">
+          <div class="phone"><img src="shots/wc-1.jpg" alt="Wetin I Go Chop signboard and filters for when, budget and mood" loading="lazy"></div>
+          <div class="phone"><img src="shots/wc-2.jpg" alt="Wetin I Go Chop result: today you dey chop gari foto" loading="lazy"></div>
+          <div class="phone"><img src="shots/wc-3.jpg" alt="Who dey pay wheel with Kofi, Ama and Me" loading="lazy"></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="how">
+    <div class="sechead"><h2>How I build</h2></div>
+    <div class="how">
+      <div><b>No Play Store</b><span>Each app is a website you add to your home screen. It opens like any other app.</span></div>
+      <div><b>Works offline</b><span>Once opened, it keeps working with no data bundle.</span></div>
+      <div><b>Your data stays yours</b><span>Everything is saved on your phone. No accounts, no servers.</span></div>
+      <div><b>Free</b><span>Hosted on GitHub Pages, so it costs nothing to use or to run.</span></div>
+    </div>
+    <p class="partner">I come up with the idea, design the screens, write the copy and test on real phones with friends. I write the code with Claude, an AI assistant, as my coding partner.</p>
+
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <h2>Got a problem an app could fix?</h2>
+      <p>I’m open to internships, data and analytics roles, and small app projects. Send me an email or give me a call.</p>
+    </div>
+    <div class="mail">
+      <div class="mailbox"><code id="mail">immanueladomn@gmail.com</code><button type="button" data-copy="mail">Copy</button></div>
+      <div class="mailbox"><code id="phone">+233 50 870 6789</code><button type="button" data-copy="phone">Copy</button></div>
+      <a class="btn" href="https://github.com/iaNyarko" target="_blank" rel="noopener">GitHub: iaNyarko ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Immanuel Adom Nyarko · Accra, Ghana</span>
+    <span>Built between trotro rides.</span>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+  var el=document.getElementById(b.getAttribute('data-copy')),t=el.textContent;
+  var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy';},1800);};
+  var sel=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';};
+  try{navigator.clipboard.writeText(t).then(done,sel);}catch(e){sel();}
+});});
+</script>
+<script data-goatcounter="https://ianyarko.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
